@@ -9,6 +9,9 @@
 </head>
 <body>
 
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="themeToggle">🌙</button>
+
   <!-- Header -->
   <header>
     <div class="nav-header">
@@ -34,8 +37,8 @@
   <section class="hero glassmorphic">
     <div class="container">
       <h2>Crack NEET with Guidance from Real Toppers</h2>
-      <p>Start your journey with personal mentorship, study plans, and everything needed to succeed in NEET.</p>
-      <a href="#coursesSection" class="btn">View Courses</a>
+      <p>Your journey to AIIMS starts here — Personalized mentorship from those who made it.</p>
+      <a href="#coursesSection" class="btn">View Mentorship Plans</a>
     </div>
   </section>
 
@@ -50,66 +53,79 @@
   <!-- Courses Section -->
   <section id="coursesSection" class="plans">
     <div class="container">
-      <h2 class="text-center">🚀 MARGDARSHAK – 1:1 Mentorship</h2>
-      <div class="swipe-hint"><span>← Swipe →</span></div>
+      <h2 class="text-center">🚀 MARGDARSHANK – 1:1 Mentorship for NEET 2026</h2>
+      <p class="subtitle center">✨ Personal One-to-One Mentorship by NEET Toppers & MBBS Seniors<br><strong>For 12th Class & Droppers.</strong></p>
 
-      <div class="plan-cards scroll-x">
-        <!-- Basic Plan -->
-        <div class="plan glassmorphic green">
+      <div class="features-block">
+        <ul class="features-list-icons">
+          <li>✅ 1:1 Personal Mentorship</li>
+          <li>📋 Personalized Study Plans</li>
+          <li>📈 Daily Progress Tracking</li>
+          <li>❓ Doubt Discussion</li>
+          <li>📚 Subject Specific Strategy</li>
+          <li>🎯 Weekly Target Setting</li>
+          <li>🧠 Stress Management</li>
+          <li>💬 Group Zoom Meetings</li>
+          <li>📘 Study Material Sharing</li>
+          <li>👨‍👩‍👧 Parents Update Session</li>
+        </ul>
+      </div>
+
+      <div class="swipe-hint">
+        <span>← Swipe →</span>
+      </div>
+
+      <div class="course-flex scroll-x">
+        <!-- BASIC PLAN -->
+        <div class="plan plan-small basic">
           <h3>BASIC PLAN</h3>
           <p>Basic Mentorship Plan (6 Months)</p>
           <p class="old-price">₹899</p>
           <p class="price">₹699</p>
           <ul class="features-list">
             <li>✔️ 1:1 Mentorship</li>
-            <li>✔️ Personal Study Plans</li>
+            <li>✔️ Study Plans</li>
             <li>✔️ Progress Tracking</li>
-            <li>✔️ Strategy & Analysis</li>
             <li>❌ Zoom Sessions</li>
             <li>❌ Parent Updates</li>
-            <li>❌ Resource Sharing</li>
           </ul>
           <a href="#" class="btn small">Enroll Now</a>
         </div>
 
-        <!-- Standard Plan -->
-        <div class="plan glassmorphic blue">
-          <h3>STANDARD PLAN</h3>
-          <p>Standard Prep Plan (Till NEET’26)</p>
-          <p class="old-price">₹1499</p>
-          <p class="price">₹1199</p>
-          <ul class="features-list">
-            <li>✔️ Includes Basic Plan</li>
-            <li>✔️ Target Tracking</li>
-            <li>✔️ Monthly Reports</li>
-            <li>✔️ Flexible Mentorship</li>
-            <li>❌ Live Zooms</li>
-            <li>❌ Parent Involvement</li>
-          </ul>
-          <a href="#" class="btn small">Enroll</a>
-        </div>
-
-        <!-- Ultimate Plan -->
-        <div class="plan glassmorphic red featured">
+        <!-- ULTIMATE PLAN -->
+        <div class="plan plan-large ultimate">
           <h3>ULTIMATE PLAN</h3>
-          <p>Ultimate Success Plan (Till NEET’26)</p>
+          <p>Ultimate Success Plan (Till NEET'26)</p>
           <p class="old-price">₹1999</p>
           <p class="price highlight">₹1599</p>
           <ul class="features-list">
             <li>✔️ All Standard Features</li>
             <li>✔️ Zoom Group Calls</li>
             <li>✔️ Parent Update System</li>
-            <li>✔️ Mentor Switching</li>
-            <li>✔️ Mock Interview</li>
-            <li>✔️ Exam Strategy Boards</li>
+            <li>✔️ Strategy Boards</li>
           </ul>
           <a href="#" class="btn small">Join Now</a>
+        </div>
+
+        <!-- STANDARD PLAN -->
+        <div class="plan plan-small standard">
+          <h3>STANDARD PLAN</h3>
+          <p>Standard Prep Plan (Till NEET'26)</p>
+          <p class="old-price">₹1499</p>
+          <p class="price">₹1199</p>
+          <ul class="features-list">
+            <li>✔️ Basic Features</li>
+            <li>✔️ Monthly Reports</li>
+            <li>✔️ Mild Flexibility</li>
+            <li>❌ Live Zooms</li>
+          </ul>
+          <a href="#" class="btn small">Enroll</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- Testimonials -->
   <section class="testimonials" id="testimonialsSection">
     <div class="container">
       <h2>What Aspirants Say</h2>
@@ -117,32 +133,34 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/your-id" method="POST">
-        <input type="text" name="name" required placeholder="Your Name">
-        <input type="email" name="email" required placeholder="Your Email">
-        <textarea name="message" required placeholder="Your Message"></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
+  <!-- Contact + Find Us -->
+  <section class="contact-social-wrapper" id="contact">
+    <div class="container contact-social-grid">
+      <!-- Contact Form -->
+      <div class="form-box">
+        <h2>Contact Us</h2>
+        <form action="https://formspree.io/f/your-id" method="POST">
+          <input type="text" name="name" required placeholder="Your Name">
+          <input type="email" name="email" required placeholder="Your Email">
+          <textarea name="message" required placeholder="Your Message"></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
 
-  <!-- Find Us Section -->
-  <section class="find-us">
-    <div class="container">
-      <h2 class="text-center">🌐 Find Us on Social Media</h2>
-      <div class="social-links">
-        <a href="https://t.me/stethomatesNEET" target="_blank">📨 Telegram: @stethomatesNEET</a>
-        <a href="https://instagram.com/stethomates" target="_blank">📸 Instagram: @stethomates</a>
-        <a href="mailto:stethomates@gmail.com" target="_blank">📧 Email: stethomates@gmail.com</a>
-        <a href="https://wa.me/917770674486" target="_blank">📞 WhatsApp: +91 77760 74486</a>
+      <!-- Find Us Social Links -->
+      <div class="social-box glassmorphic">
+        <h2>🌐 Find Us</h2>
+        <div class="social-links">
+          <a href="https://t.me/stethomatesNEET" target="_blank">📨 Telegram: @stethomatesNEET</a>
+          <a href="https://instagram.com/stethomates" target="_blank">📸 Instagram: @stethomates</a>
+          <a href="mailto:stethomates@gmail.com" target="_blank">📧 Email: stethomates@gmail.com</a>
+          <a href="https://wa.me/917770674486" target="_blank">📞 WhatsApp: +91 77760 74486</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2025 Stethomates · Empowering Medical Minds.</p>
@@ -180,6 +198,16 @@
             <strong>– ${t.name}</strong>
           </div>`;
       });
+    });
+  </script>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+    toggleBtn.addEventListener("click", () => {
+      const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+      toggleBtn.textContent = theme === "dark" ? "☀️" : "🌙";
     });
   </script>
 </body>
