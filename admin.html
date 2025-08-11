@@ -2,119 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Admin Login – Stethomates</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Admin – Stethomates</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      padding: 40px;
       background: #f4f4f4;
-      margin: 0;
-      padding: 0;
+      max-width: 800px;
+      margin: auto;
     }
 
-    .login-container, .dashboard {
-      max-width: 600px;
-      margin: 80px auto;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .login-container h2,
-    .dashboard h2 {
-      margin-bottom: 20px;
+    h1 {
       text-align: center;
-    }
-
-    label {
-      font-weight: 500;
-      margin-top: 10px;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    button {
-      padding: 12px 25px;
-      background: #9b59b6;
-      border: none;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      float: right;
+      margin-bottom: 40px;
+      color: #9b59b6;
     }
 
     .section {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
+      background: white;
+      padding: 25px;
+      margin-bottom: 40px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-radius: 10px;
     }
 
-    .logout {
-      background-color: crimson;
-      margin-top: 30px;
-      float: left;
+    .section h2 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
+    button {
+      background: #9b59b6;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #8e44ad;
     }
 
     .preview {
-      background: #fefefe;
-      margin-top: 10px;
-      padding: 10px;
+      background: #fafafa;
+      padding: 15px;
       border-left: 4px solid #9b59b6;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .logout {
+      margin-top: 20px;
+      background: crimson;
+    }
+
+    .login-container {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .login-container input {
+      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Login Form -->
-  <div class="login-container" id="loginForm">
-    <h2>Admin Login – Stethomates</h2>
-    <label>Username</label>
-    <input type="text" id="username" placeholder="Enter username" />
-    <label>Password</label>
-    <input type="password" id="password" placeholder="Enter password" />
+  <h1>🩺 Stethomates Admin Dashboard</h1>
+
+  <!-- Login Box -->
+  <div id="loginForm" class="login-container section">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
     <button onclick="validateLogin()">Login</button>
   </div>
 
-  <!-- Dashboard -->
-  <div class="dashboard" id="adminPanel" style="display: none;">
-    <h2>Welcome, Admin 🩺</h2>
-
+  <!-- Admin Panel -->
+  <div id="adminPanel" style="display: none;">
+    <!-- Add Course -->
     <div class="section">
-      <h3>Add Course</h3>
+      <h2>Add Course</h2>
       <input type="text" id="courseName" placeholder="Course Name" />
       <input type="text" id="coursePrice" placeholder="Price" />
       <textarea id="courseDesc" placeholder="Description"></textarea>
-      <button onclick="addCourse()">Add</button>
-      <div id="coursePreview"></div>
+      <button onclick="addCourse()">➕ Add Course</button>
+      <div id="coursePreview" style="margin-top: 20px;"></div>
     </div>
 
+    <!-- Add Testimonial -->
     <div class="section">
-      <h3>Add Testimonial</h3>
-      <input type="text" id="userName" placeholder="Aspirant’s Name" />
-      <textarea id="testimonialText" placeholder="Their Message"></textarea>
-      <button onclick="addTestimonial()">Add</button>
-      <div id="testimonialPreview"></div>
+      <h2>Add Testimonial</h2>
+      <input type="text" id="userName" placeholder="Aspirant's Name" />
+      <textarea id="testimonialText" placeholder="Their feedback or experience"></textarea>
+      <button onclick="addTestimonial()">➕ Add Testimonial</button>
+      <div id="testimonialPreview" style="margin-top: 20px;"></div>
     </div>
 
+    <!-- Logout -->
     <button class="logout" onclick="logout()">Logout</button>
   </div>
 
-  <script>
-    const users = {
-      "Priyansh": "Priyansh@17",
-      "rosx": "Rosx@123"
+  <!-- Firebase Admin Script -->
+  <script type="module">
+    // 🔹 Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+    // 🔹 Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCtAjKLZvpqGMqgU-uSoyYuHFp_iFXDHpE",
+      authDomain: "stethomates-41fc8.firebaseapp.com",
+      projectId: "stethomates-41fc8",
+      storageBucket: "stethomates-41fc8.firebasestorage.app",
+      messagingSenderId: "64681618437",
+      appId: "1:64681618437:web:089799248334bf28ec406c",
+      databaseURL: "https://stethomates-41fc8-default-rtdb.firebaseio.com/"
     };
 
-    function validateLogin() {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // 🔑 Login System
+    const users = {
+      Priyansh: "Priyansh@17",
+      rosx: "Rosx@123"
+    };
+
+    window.validateLogin = function () {
       const u = document.getElementById("username").value;
       const p = document.getElementById("password").value;
 
@@ -128,12 +157,13 @@
       }
     }
 
-    function logout() {
+    window.logout = function () {
       document.getElementById("adminPanel").style.display = "none";
       document.getElementById("loginForm").style.display = "block";
     }
 
-    function addCourse() {
+    // 🎓 Add Course – use localStorage for now
+    window.addCourse = function () {
       const name = document.getElementById('courseName').value;
       const price = document.getElementById('coursePrice').value;
       const desc = document.getElementById('courseDesc').value;
@@ -147,37 +177,48 @@
       alert("✅ Course added!");
     }
 
-    function addTestimonial() {
-      const name = document.getElementById('userName').value;
-      const msg = document.getElementById('testimonialText').value;
+    // 🩺 Add Testimonial – Firebase Database
+    window.addTestimonial = function () {
+      const name = document.getElementById("userName").value.trim();
+      const msg = document.getElementById("testimonialText").value.trim();
 
-      if (!name || !msg) return alert("Please fill all testimonial fields!");
+      if (!name || !msg) return alert("⚠️ Both fields are required");
 
-      let t = JSON.parse(localStorage.getItem('steth-testimonials')) || [];
-      t.push({ name, msg });
-      localStorage.setItem('steth-testimonials', JSON.stringify(t));
-      showTestimonials();
-      alert("✅ Testimonial added!");
+      const testimonialRef = ref(db, "testimonials/");
+      push(testimonialRef, { name, msg })
+        .then(() => {
+          alert("✅ Testimonial added!");
+          document.getElementById("userName").value = "";
+          document.getElementById("testimonialText").value = "";
+        })
+        .catch(err => {
+          alert("❌ Failed to add testimonial\n" + err);
+        });
     }
 
-    function showCourses() {
-      const courseBox = document.getElementById('coursePreview');
-      let list = JSON.parse(localStorage.getItem('steth-courses')) || [];
+    // 📘 Show Courses from localStorage
+    window.showCourses = function () {
+      const courseBox = document.getElementById("coursePreview");
+      let list = JSON.parse(localStorage.getItem("steth-courses")) || [];
       courseBox.innerHTML = "";
       list.forEach(course => {
         courseBox.innerHTML += `<div class="preview"><strong>${course.name}</strong> — ₹${course.price}<br>${course.desc}</div>`;
       });
     }
 
-    function showTestimonials() {
-      const testBox = document.getElementById('testimonialPreview');
-      let list = JSON.parse(localStorage.getItem('steth-testimonials')) || [];
-      testBox.innerHTML = "";
-      list.forEach(t => {
-        testBox.innerHTML += `<div class="preview"><strong>${t.name}</strong>: ${t.msg}</div>`;
-      });
-    }
-  </script>
+    // 💬 Show Testimonials from Firebase
+    window.showTestimonials = function () {
+      const testBox = document.getElementById("testimonialPreview");
+      const testimonialRef = ref(db, "testimonials");
 
+      onValue(testimonialRef, (snapshot) => {
+        testBox.innerHTML = "";
+        snapshot.forEach(child => {
+          const t = child.val();
+          testBox.innerHTML += `<div class="preview"><strong>${t.name}</strong>: ${t.msg}</div>`;
+        });
+      });
+    };
+  </script>
 </body>
 </html>
