@@ -4,16 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stethomates – NEET Mentorship</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Theme Switch -->
+  <button class="theme-toggle" id="themeToggle">🌙</button>
 
   <!-- Header -->
   <header>
     <div class="nav-header">
       <div class="logo-area">
-        <img src="logo.png" class="logo" alt="Logo">
+        <img src="logo.png" alt="Stethomates Logo" class="logo" />
         <div class="brand-text">
           <h1>STETHOMATES</h1>
           <p>Empowering <span>Medical Minds</span></p>
@@ -34,7 +37,7 @@
   <section class="hero glassmorphic">
     <div class="container">
       <h2>Crack NEET with Guidance from Real Toppers</h2>
-      <p>Start your journey with personal mentorship, study plans, and everything needed to succeed in NEET.</p>
+      <p>Get mentored by NEET-selected students. Study smarter, not harder!</p>
       <a href="#coursesSection" class="btn">View Courses</a>
     </div>
   </section>
@@ -43,73 +46,74 @@
   <section class="about" id="about">
     <div class="container">
       <h2>About Stethomates</h2>
-      <p>We're a community of NEET-qualified mentors guiding 12th & dropper aspirants with exclusive 1:1 mentorship and proven strategies.</p>
+      <p>Stethomates is a student-led mentorship platform where NEET-select aspirants guide active and upcoming students with actionable strategies, motivation, and routines throughout the preparation journey.</p>
     </div>
   </section>
 
-  <!-- Courses Section -->
-  <section id="coursesSection" class="plans">
+  <!-- MARGDARSHAK COURSES -->
+  <section id="coursesSection" class="plans program-section">
     <div class="container">
-      <h2 class="text-center">🚀 MARGDARSHAK – 1:1 Mentorship</h2>
-      <div class="swipe-hint"><span>← Swipe →</span></div>
+      <h2 class="text-center">🚀 MARGDARSHAK – 1:1 Mentorship for NEET 2026</h2>
+      <p class="text-center subtitle">
+        Personal One-to-One Mentorship by NEET Toppers & MBBS Seniors<br>
+        For <strong>12th Class & Droppers</strong>.
+      </p>
 
-      <div class="plan-cards scroll-x">
-        <!-- Basic Plan -->
+      <div class="features-box glassmorphic">
+        <div>
+          <ul>
+            <li>✅ 1:1 Personal Mentorship</li>
+            <li>🧾 Personalized Study Plans</li>
+            <li>📈 Daily Progress Tracking</li>
+            <li>❓ Doubt Discussion</li>
+            <li>📚 Subject Specific Strategy</li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>🎯 Weekly Target Setting</li>
+            <li>🧠 Stress Management</li>
+            <li>💬 Group Zoom Meetings</li>
+            <li>📘 Study Material Sharing</li>
+            <li>👨‍👩‍👧 Parents Update Session</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Plans -->
+      <div class="plan-cards">
         <div class="plan glassmorphic green">
           <h3>BASIC PLAN</h3>
           <p>Basic Mentorship Plan (6 Months)</p>
           <p class="old-price">₹899</p>
           <p class="price">₹699</p>
-          <ul class="features-list">
-            <li>✔️ 1:1 Mentorship</li>
-            <li>✔️ Personal Study Plans</li>
-            <li>✔️ Progress Tracking</li>
-            <li>✔️ Strategy & Analysis</li>
-            <li>❌ Zoom Sessions</li>
-            <li>❌ Parent Updates</li>
-            <li>❌ Resource Sharing</li>
-          </ul>
           <a href="#" class="btn small">Enroll Now</a>
         </div>
 
-        <!-- Standard Plan -->
-        <div class="plan glassmorphic blue">
-          <h3>STANDARD PLAN</h3>
-          <p>Standard Prep Plan (Till NEET’26)</p>
-          <p class="old-price">₹1499</p>
-          <p class="price">₹1199</p>
-          <ul class="features-list">
-            <li>✔️ Includes Basic Plan</li>
-            <li>✔️ Target Tracking</li>
-            <li>✔️ Monthly Reports</li>
-            <li>✔️ Flexible Mentorship</li>
-            <li>❌ Live Zooms</li>
-            <li>❌ Parent Involvement</li>
-          </ul>
-          <a href="#" class="btn small">Enroll</a>
-        </div>
-
-        <!-- Ultimate Plan -->
         <div class="plan glassmorphic red featured">
           <h3>ULTIMATE PLAN</h3>
-          <p>Ultimate Success Plan (Till NEET’26)</p>
+          <p>Ultimate Success Plan (Till NEET'26)</p>
           <p class="old-price">₹1999</p>
           <p class="price highlight">₹1599</p>
-          <ul class="features-list">
-            <li>✔️ All Standard Features</li>
-            <li>✔️ Zoom Group Calls</li>
-            <li>✔️ Parent Update System</li>
-            <li>✔️ Mentor Switching</li>
-            <li>✔️ Mock Interview</li>
-            <li>✔️ Exam Strategy Boards</li>
-          </ul>
           <a href="#" class="btn small">Join Now</a>
         </div>
+
+        <div class="plan glassmorphic blue">
+          <h3>STANDARD PLAN</h3>
+          <p>Standard Prep Plan (Till NEET'26)</p>
+          <p class="old-price">₹1499</p>
+          <p class="price">₹1199</p>
+          <a href="#" class="btn small">Enroll</a>
+        </div>
+      </div>
+
+      <div class="text-center enroll-action">
+        <a href="https://wa.me/917770674486" class="btn">📩 To Know More & Enroll</a>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- Testimonials -->
   <section class="testimonials" id="testimonialsSection">
     <div class="container">
       <h2>What Aspirants Say</h2>
@@ -117,29 +121,16 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section class="contact" id="contact">
     <div class="container">
       <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/your-id" method="POST">
+      <form action="https://formspree.io/f/your-code-here" method="POST">
         <input type="text" name="name" required placeholder="Your Name">
         <input type="email" name="email" required placeholder="Your Email">
         <textarea name="message" required placeholder="Your Message"></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
-    </div>
-  </section>
-
-  <!-- Find Us Section -->
-  <section class="find-us">
-    <div class="container">
-      <h2 class="text-center">🌐 Find Us on Social Media</h2>
-      <div class="social-links">
-        <a href="https://t.me/stethomatesNEET" target="_blank">📨 Telegram: @stethomatesNEET</a>
-        <a href="https://instagram.com/stethomates" target="_blank">📸 Instagram: @stethomates</a>
-        <a href="mailto:stethomates@gmail.com" target="_blank">📧 Email: stethomates@gmail.com</a>
-        <a href="https://wa.me/917770674486" target="_blank">📞 WhatsApp: +91 77760 74486</a>
-      </div>
     </div>
   </section>
 
@@ -149,38 +140,29 @@
     </div>
   </footer>
 
-  <!-- Firebase Testimonials Script -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCtAjKLZvpqGMqgU-uSoyYuHFp_iFXDHpE",
-      authDomain: "stethomates-41fc8.firebaseapp.com",
-      projectId: "stethomates-41fc8",
-      storageBucket: "stethomates-41fc8.firebasestorage.app",
-      messagingSenderId: "64681618437",
-      appId: "1:64681618437:web:089799248334bf28ec406c",
-      databaseURL: "https://stethomates-41fc8-default-rtdb.firebaseio.com/"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    const out = document.getElementById("liveTestimonials");
-    const testimonialRef = ref(db, "testimonials");
-
-    onValue(testimonialRef, (snapshot) => {
-      out.innerHTML = "";
-      snapshot.forEach(child => {
-        const t = child.val();
-        out.innerHTML += `
-          <div class="glassmorphic testimonial-box">
-            <p>"${t.msg}"</p>
-            <strong>– ${t.name}</strong>
-          </div>`;
-      });
+  <!-- JS -->
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+    toggleBtn.addEventListener("click", () => {
+      const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+      toggleBtn.textContent = theme === "dark" ? "☀️" : "🌙";
     });
+
+    function showTestimonialsOnSite() {
+      const out = document.getElementById("liveTestimonials");
+      let testimonials = JSON.parse(localStorage.getItem("steth-testimonials")) || [];
+      out.innerHTML = "";
+      testimonials.forEach(t => {
+        out.innerHTML += `
+        <div class="glassmorphic testimonial-box">
+          <p>"${t.msg}"</p>
+          <strong>- ${t.name}</strong>
+        </div>`;
+      });
+    }
+    showTestimonialsOnSite();
   </script>
+
 </body>
 </html>
