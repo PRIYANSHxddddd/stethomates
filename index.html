@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stethomates – NEET Mentorship</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Theme Switch -->
+  <button class="theme-toggle" id="themeToggle">🌙</button>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-header">
+      <div class="logo-area">
+        <img src="logo.png" alt="Stethomates Logo" class="logo" />
+        <div class="brand-text">
+          <h1>STETHOMATES</h1>
+          <p>Empowering <span>Medical Minds</span></p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#coursesSection">Courses</a></li>
+          <li><a href="#testimonialsSection">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero glassmorphic">
+    <div class="container">
+      <h2>Crack NEET with Guidance from Real Toppers</h2>
+      <p>Get mentored by NEET-selected students. Study smarter, not harder!</p>
+      <a href="#coursesSection" class="btn">View Courses</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2>About Stethomates</h2>
+      <p>Stethomates is a student-led mentorship platform where NEET-select aspirants guide active and upcoming students with actionable strategies, motivation, and routines throughout the preparation journey.</p>
+    </div>
+  </section>
+
+  <!-- MARGDARSHAK COURSES -->
+  <section id="coursesSection" class="plans program-section">
+    <div class="container">
+      <h2 class="text-center">🚀 MARGDARSHAK – 1:1 Mentorship for NEET 2026</h2>
+      <p class="text-center subtitle">
+        Personal One-to-One Mentorship by NEET Toppers & MBBS Seniors<br>
+        For <strong>12th Class & Droppers</strong>.
+      </p>
+
+      <div class="features-box glassmorphic">
+        <div>
+          <ul>
+            <li>✅ 1:1 Personal Mentorship</li>
+            <li>🧾 Personalized Study Plans</li>
+            <li>📈 Daily Progress Tracking</li>
+            <li>❓ Doubt Discussion</li>
+            <li>📚 Subject Specific Strategy</li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>🎯 Weekly Target Setting</li>
+            <li>🧠 Stress Management</li>
+            <li>💬 Group Zoom Meetings</li>
+            <li>📘 Study Material Sharing</li>
+            <li>👨‍👩‍👧 Parents Update Session</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Plans -->
+      <div class="plan-cards">
+        <div class="plan glassmorphic green">
+          <h3>BASIC PLAN</h3>
+          <p>Basic Mentorship Plan (6 Months)</p>
+          <p class="old-price">₹899</p>
+          <p class="price">₹699</p>
+          <a href="#" class="btn small">Enroll Now</a>
+        </div>
+
+        <div class="plan glassmorphic red featured">
+          <h3>ULTIMATE PLAN</h3>
+          <p>Ultimate Success Plan (Till NEET'26)</p>
+          <p class="old-price">₹1999</p>
+          <p class="price highlight">₹1599</p>
+          <a href="#" class="btn small">Join Now</a>
+        </div>
+
+        <div class="plan glassmorphic blue">
+          <h3>STANDARD PLAN</h3>
+          <p>Standard Prep Plan (Till NEET'26)</p>
+          <p class="old-price">₹1499</p>
+          <p class="price">₹1199</p>
+          <a href="#" class="btn small">Enroll</a>
+        </div>
+      </div>
+
+      <div class="text-center enroll-action">
+        <a href="https://wa.me/917770674486" class="btn">📩 To Know More & Enroll</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonialsSection">
+    <div class="container">
+      <h2>What Aspirants Say</h2>
+      <div id="liveTestimonials" class="testimonial-cards"></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form action="https://formspree.io/f/your-code-here" method="POST">
+        <input type="text" name="name" required placeholder="Your Name">
+        <input type="email" name="email" required placeholder="Your Email">
+        <textarea name="message" required placeholder="Your Message"></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Stethomates · Empowering Medical Minds.</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+    toggleBtn.addEventListener("click", () => {
+      const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+      toggleBtn.textContent = theme === "dark" ? "☀️" : "🌙";
+    });
+
+    function showTestimonialsOnSite() {
+      const out = document.getElementById("liveTestimonials");
+      let testimonials = JSON.parse(localStorage.getItem("steth-testimonials")) || [];
+      out.innerHTML = "";
+      testimonials.forEach(t => {
+        out.innerHTML += `
+        <div class="glassmorphic testimonial-box">
+          <p>"${t.msg}"</p>
+          <strong>- ${t.name}</strong>
+        </div>`;
+      });
+    }
+    showTestimonialsOnSite();
+  </script>
+
+</body>
+</html>

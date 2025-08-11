@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login – Stethomates</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .login-container, .dashboard {
+      max-width: 600px;
+      margin: 80px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-container h2,
+    .dashboard h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 12px 25px;
+      background: #9b59b6;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      float: right;
+    }
+
+    .section {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .logout {
+      background-color: crimson;
+      margin-top: 30px;
+      float: left;
+    }
+
+    .preview {
+      background: #fefefe;
+      margin-top: 10px;
+      padding: 10px;
+      border-left: 4px solid #9b59b6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div class="login-container" id="loginForm">
+    <h2>Admin Login – Stethomates</h2>
+    <label>Username</label>
+    <input type="text" id="username" placeholder="Enter username" />
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="validateLogin()">Login</button>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="dashboard" id="adminPanel" style="display: none;">
+    <h2>Welcome, Admin 🩺</h2>
+
+    <div class="section">
+      <h3>Add Course</h3>
+      <input type="text" id="courseName" placeholder="Course Name" />
+      <input type="text" id="coursePrice" placeholder="Price" />
+      <textarea id="courseDesc" placeholder="Description"></textarea>
+      <button onclick="addCourse()">Add</button>
+      <div id="coursePreview"></div>
+    </div>
+
+    <div class="section">
+      <h3>Add Testimonial</h3>
+      <input type="text" id="userName" placeholder="Aspirant’s Name" />
+      <textarea id="testimonialText" placeholder="Their Message"></textarea>
+      <button onclick="addTestimonial()">Add</button>
+      <div id="testimonialPreview"></div>
+    </div>
+
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const users = {
+      "Priyansh": "Priyansh@17",
+      "rosx": "Rosx@123"
+    };
+
+    function validateLogin() {
+      const u = document.getElementById("username").value;
+      const p = document.getElementById("password").value;
+
+      if (users[u] && users[u] === p) {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("adminPanel").style.display = "block";
+        showCourses();
+        showTestimonials();
+      } else {
+        alert("❌ Invalid credentials");
+      }
+    }
+
+    function logout() {
+      document.getElementById("adminPanel").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+    }
+
+    function addCourse() {
+      const name = document.getElementById('courseName').value;
+      const price = document.getElementById('coursePrice').value;
+      const desc = document.getElementById('courseDesc').value;
+
+      if (!name || !price || !desc) return alert("Please fill all course fields!");
+
+      let courses = JSON.parse(localStorage.getItem('steth-courses')) || [];
+      courses.push({ name, price, desc });
+      localStorage.setItem('steth-courses', JSON.stringify(courses));
+      showCourses();
+      alert("✅ Course added!");
+    }
+
+    function addTestimonial() {
+      const name = document.getElementById('userName').value;
+      const msg = document.getElementById('testimonialText').value;
+
+      if (!name || !msg) return alert("Please fill all testimonial fields!");
+
+      let t = JSON.parse(localStorage.getItem('steth-testimonials')) || [];
+      t.push({ name, msg });
+      localStorage.setItem('steth-testimonials', JSON.stringify(t));
+      showTestimonials();
+      alert("✅ Testimonial added!");
+    }
+
+    function showCourses() {
+      const courseBox = document.getElementById('coursePreview');
+      let list = JSON.parse(localStorage.getItem('steth-courses')) || [];
+      courseBox.innerHTML = "";
+      list.forEach(course => {
+        courseBox.innerHTML += `<div class="preview"><strong>${course.name}</strong> — ₹${course.price}<br>${course.desc}</div>`;
+      });
+    }
+
+    function showTestimonials() {
+      const testBox = document.getElementById('testimonialPreview');
+      let list = JSON.parse(localStorage.getItem('steth-testimonials')) || [];
+      testBox.innerHTML = "";
+      list.forEach(t => {
+        testBox.innerHTML += `<div class="preview"><strong>${t.name}</strong>: ${t.msg}</div>`;
+      });
+    }
+  </script>
+
+</body>
+</html>
